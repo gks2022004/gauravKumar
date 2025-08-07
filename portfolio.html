@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaurav Kumar Singh - Blockchain Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Minimalist Gray & Neutral -->
+    <!-- Application Structure Plan: The structure is a single-column, minimalist portfolio. The header is updated for more comprehensive navigation. The flow is: About -> Experience -> Tools -> Projects -> Interests. This logical progression provides a complete picture of the candidate, from professional summary to personal pursuits, all within a clean, scannable layout that aligns with the user's provided aesthetic. -->
+    <!-- Visualization & Content Choices: 
+        1. Report Info: Skills -> Goal: Showcase technologies -> Viz: Grid of Logos (HTML/CSS) -> Interaction: Hover effect -> Justification: Clean, modern, and instantly scannable for recruiters.
+        2. Report Info: Projects -> Goal: Present work clearly -> Viz: Simple list format -> Interaction: Direct links -> Justification: Straightforward and reduces clicks, fitting the minimalist design.
+        3. Report Info: Experience -> Goal: Detail professional history -> Viz: Dedicated timeline/list section -> Interaction: Static text -> Justification: A dedicated section provides better structure than merging with the intro.
+        4. Report Info: Personal Interests -> Goal: Add personality -> Viz: Grid of cards with icons -> Interaction: Subtle hover effect -> Justification: Mirrors the clean design of the tech grid and adds a personal touch.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* gray-50 */
+            color: #111827; /* gray-900 */
+        }
+        .nav-link {
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #000;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            height: 180px;
+            background-color: #f3f4f6; /* gray-100 */
+            border-radius: 0.75rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        .card-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .tech-icon {
+            max-height: 48px;
+            max-width: 80px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: filter 0.3s, opacity 0.3s;
+        }
+        .card-container:hover .tech-icon {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .project-link, .resume-link {
+            color: #4b5563; /* gray-600 */
+            transition: color 0.2s;
+        }
+        .project-link:hover, .resume-link:hover {
+            color: #000;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll-left 20s linear infinite;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
+            padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #f3f4f6;
+            min-height: 120px;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        .project-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 4px 12px 0 rgba(0,0,0,0.06);
+            border-color: #d1d5db;
+        }
+        .project-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+        .project-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .project-badge {
+            background: #f3f4f6;
+            color: #111827;
+            font-size: 0.6rem;
+            padding: 0.08rem 0.4rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        .project-links {
+            margin-top: auto;
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+        .project-btn {
+            background: #111827;
+            color: #fff;
+            padding: 0.15rem 0.6rem;
+            border-radius: 0.3rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s;
+            box-shadow: 0 1px 2px 0 rgba(17,24,39,0.08);
+            line-height: 1.1;
+        }
+        .project-btn:hover {
+            background: #4b5563;
+        }
+        .github-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            border-radius: 0.3rem;
+            background: #f3f4f6;
+            transition: background 0.2s;
+            border: none;
+            padding: 0;
+            margin-left: 2px;
+        }
+        .github-icon-btn:hover {
+            background: #e5e7eb;
+        }
+        .github-svg {
+            width: 14px;
+            height: 14px;
+            color: #111827;
+        }
+        .project-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+        .project-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 640px) {
+  .max-w-4xl {
+    max-width: 100vw !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .project-card {
+    max-width: 100%;
+    min-width: 0;
+    padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+  }
+  .project-card h3 {
+    font-size: 0.95rem;
+  }
+  .project-card p {
+    font-size: 0.8rem;
+  }
+  .project-badges {
+    gap: 0.2rem;
+    margin-bottom: 0.4rem;
+  }
+  .project-badge {
+    font-size: 0.55rem;
+    padding: 0.06rem 0.3rem;
+  }
+  .project-links {
+    gap: 0.2rem;
+  }
+  .project-btn {
+    font-size: 0.7rem;
+    padding: 0.12rem 0.5rem;
+  }
+  .github-icon-btn {
+    width: 18px;
+    height: 18px;
+  }
+  .github-svg {
+    width: 11px;
+    height: 11px;
+  }
+  .card-container {
+    padding: 1rem 0.5rem;
+    height: auto;
+  }
+  .tech-icon {
+    max-width: 60px;
+    max-height: 36px;
+  }
+  .text-4xl {
+    font-size: 1.5rem;
+  }
+  .text-2xl {
+    font-size: 1.1rem;
+  }
+}
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Header & Navigation -->
+        <header class="flex justify-between items-center mb-16">
+            <nav class="flex items-center space-x-6">
+                <a href="#about" class="nav-link text-gray-500 font-medium">Home</a>
+                <a href="#experience" class="nav-link text-gray-500 font-medium">Experience</a>
+                <a href="#projects" class="nav-link text-gray-500 font-medium">Projects</a>
+                <a href="#" class="nav-link text-gray-500 font-medium">Blog</a>
+                <a href="./gaurav_2025_resume.pdf" target="_blank" class="nav-link text-gray-500 font-medium">Resume</a>
+            </nav>
+            <div class="flex items-center space-x-5">
+                <a href="https://github.com/gks2022004" target="_blank" class="text-gray-400 hover:text-gray-600 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/imgauravkumar7/" target="_blank" class="text-gray-400 hover:text-gray-600 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="mailto:imgauravkumar7@gmail.com" class="text-gray-400 hover:text-gray-600 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <!-- About Me Section -->
+            <section id="about" class="mb-20">
+                <div class="md:flex md:items-center md:space-x-12">
+                    <div class="md:w-2/3">
+                        <h1 class="text-4xl font-bold mb-4">Gaurav Kumar Singh</h1>
+                        <div class="text-lg text-gray-600 space-y-4">
+                            <p>
+                                I am a Blockchain Developer with a passion for building secure, scalable, and innovative decentralized applications. I thrive on solving complex problems in the Web3 space and enjoy working with modern technologies to bring ideas to life.
+                            </p>
+                            <p>
+                                 I hold a Bachelor of Engineering in Computer Science from Chandigarh University.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 mt-8 md:mt-0 md:w-1/3 flex justify-center">
+                        <img src="./hero.jpeg" alt="Gaurav Kumar Singh" class="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg">
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Experience Section -->
+            <section id="experience" class="mb-20">
+                <h2 class="text-2xl font-bold mb-8">Experience</h2>
+                 <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="text-xl font-semibold">Quranium</h3>
+                            <div class="text-sm text-gray-500">Oct 2024 – Present</div>
+                        </div>
+                        <p class="text-md text-gray-600 italic">Blockchain Developer (Remote)</p>
+                        <ul class="list-disc list-inside mt-2 text-gray-600 space-y-1">
+                            <li>Contributed to the integration of multi-chain in Token-Bound Accounts (Q-TBA).</li>
+                            <li>Built the first prototype of the Q-Safe wallet, implementing core buy/sell functionality.</li>
+                            <li>Integrated quantum-safe smart contracts with the Q-Dex frontend.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tools and Technologies Section -->
+            <section id="tools" class="mb-20">
+                <h2 class="text-2xl font-bold mb-8">Tools and Technologies</h2>
+                <div class="overflow-hidden relative">
+                    <div id="tech-scroll" class="flex min-w-full w-max animate-scroll gap-4">
+                        <!-- Tech icons will be injected here (duplicated for seamless scroll) -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="mb-20">
+                <h2 class="text-2xl font-bold mb-8">Projects</h2>
+                <div id="project-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <!-- Project list will be injected here -->
+                </div>
+            </section>
+            
+            <!-- My Interests Section -->
+            <section id="interests" class="mb-16">
+                <h2 class="text-2xl font-bold mb-8">My Interests</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="card-container">
+                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h3 class="font-semibold text-lg">Open Source</h3>
+                        <p class="text-gray-500 text-sm">I enjoy contributing to open-source projects.</p>
+                    </div>
+                    <div class="card-container">
+                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h3 class="font-semibold text-lg">Running</h3>
+                        <p class="text-gray-500 text-sm">Training for a half-marathon.</p>
+                    </div>
+                    <div class="card-container">
+                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <h3 class="font-semibold text-lg">Gaming</h3>
+                        <p class="text-gray-500 text-sm">I enjoy strategy and RPG games.</p>
+                    </div>
+                    <div class="card-container">
+                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path></svg>
+                        <h3 class="font-semibold text-lg">Reading</h3>
+                        <p class="text-gray-500 text-sm">Sci-fi and technical books are my go-to.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center text-gray-400 text-sm py-8">
+            <p>&copy; 2025 Gaurav Kumar Singh. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const technologies = [
+                { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+                { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+                { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+                { name: 'Go', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original.svg' },
+                { name: 'Rust', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg' },
+                { name: 'C++', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+                { name: 'Solidity', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/solidity/solidity-original.svg' },
+                { name: 'Ethereum', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Ethereum_logo.svg' },
+                { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+                { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+                { name: 'Django', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg' },
+                { name: 'Solana', logo: 'https://solana.com/src/img/branding/solanaLogoMark.svg' },
+                { name: 'Hardhat', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/hardhat/hardhat-original.svg' },
+                { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+                { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+                { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+                { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+                { name: 'Firebase', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain.svg' }
+            ];
+
+            // TOOLS SCROLL
+            const techScroll = document.getElementById('tech-scroll');
+            const techHTML = technologies.map(tech =>
+                `<div class="card-container min-w-[120px]" title="${tech.name}">
+                    <img src="${tech.logo}" alt="${tech.name} Logo" class="tech-icon" onerror="this.style.display='none'">
+                </div>`
+            ).join('');
+            techScroll.innerHTML = techHTML + techHTML;
+
+            // PROJECTS STATIC
+            const projects = [
+                {
+                    title: 'Staking DApp',
+                    description: 'A Web3 dApp for token staking and rewards on Sepolia, featuring a custom algorithm for automated reward calculation.',
+                    live: 'https://staking-dapp-7.vercel.app/',
+                    github: 'https://staking-dapp-7.vercel.app/',
+                    techs: ['Solidity', 'React', 'Web3', 'Sepolia'],
+                },
+                {
+                    title: 'NFT Marketplace',
+                    description: 'A full-featured marketplace for creating, minting, and trading NFTs, with decentralized metadata storage via IPFS.',
+                    live: null,
+                    github: 'https://github.com/gks2022004/NFTMarketPlace',
+                    techs: ['Solidity', 'React', 'IPFS', 'Node.js'],
+                },
+                {
+                    title: 'Crypto Wallet',
+                    description: 'A secure crypto wallet with 24-word seed phrase generation for non-custodial management and ETH transfers.',
+                    live: 'https://cryptowallet-virid.vercel.app/',
+                    github: 'https://cryptowallet-virid.vercel.app/',
+                    techs: ['React', 'Web3', 'Ethereum'],
+                },
+                {
+                    title: 'Q-Notes',
+                    description: 'A cross-platform, end-to-end encrypted notes app implementing post-quantum secure encryption (Kyber-768).',
+                    live: null,
+                    github: 'https://github.com/gks2022004/Q-NOTES',
+                    techs: ['React Native', 'Encryption', 'Kyber-768'],
+                }
+            ];
+            const projectList = document.getElementById('project-list');
+            const defaultIcon = `<svg class="project-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor"/><path d="M16 3v4M8 3v4M3 11h18" stroke="currentColor"/></svg>`;
+            const githubSVG = `<svg class="github-svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
+            projectList.innerHTML = projects.map(project => {
+                const badges = project.techs ? `<div class="project-badges">${project.techs.map(tech => `<span class="project-badge">${tech}</span>`).join('')}</div>` : '';
+                let links = '';
+                if (project.live) {
+                    links += `<a href="${project.live}" target="_blank" class="project-btn">Live Demo</a>`;
+                }
+                if (project.github) {
+                    links += `<a href="${project.github}" target="_blank" class="github-icon-btn" aria-label="GitHub">${githubSVG}</a>`;
+                }
+                return `<div class="project-card">${defaultIcon}<h3 class="text-xl font-semibold mb-2">${project.title}</h3>${badges}<p class="text-gray-600 mb-4">${project.description}</p><div class="project-links">${links}</div></div>`;
+            }).join('');
+        });
+    </script>
+</body>
+</html>
