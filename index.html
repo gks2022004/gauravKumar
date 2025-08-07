@@ -8,15 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Minimalist Gray & Neutral -->
-    <!-- Application Structure Plan: The structure is a single-column, minimalist portfolio. The header is updated for more comprehensive navigation. The flow is: About -> Experience -> Tools -> Projects -> Interests. This logical progression provides a complete picture of the candidate, from professional summary to personal pursuits, all within a clean, scannable layout that aligns with the user's provided aesthetic. -->
-    <!-- Visualization & Content Choices: 
-        1. Report Info: Skills -> Goal: Showcase technologies -> Viz: Grid of Logos (HTML/CSS) -> Interaction: Hover effect -> Justification: Clean, modern, and instantly scannable for recruiters.
-        2. Report Info: Projects -> Goal: Present work clearly -> Viz: Simple list format -> Interaction: Direct links -> Justification: Straightforward and reduces clicks, fitting the minimalist design.
-        3. Report Info: Experience -> Goal: Detail professional history -> Viz: Dedicated timeline/list section -> Interaction: Static text -> Justification: A dedicated section provides better structure than merging with the intro.
-        4. Report Info: Personal Interests -> Goal: Add personality -> Viz: Grid of cards with icons -> Interaction: Subtle hover effect -> Justification: Mirrors the clean design of the tech grid and adds a personal touch.
-    -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -29,7 +20,7 @@
         .nav-link:hover {
             color: #000;
         }
-        .card-container {
+        .tech-card-container {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -41,7 +32,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
         }
-        .card-container:hover {
+        .tech-card-container:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
@@ -52,7 +43,7 @@
             opacity: 0.7;
             transition: filter 0.3s, opacity 0.3s;
         }
-        .card-container:hover .tech-icon {
+        .tech-card-container:hover .tech-icon {
             filter: grayscale(0%);
             opacity: 1;
         }
@@ -68,153 +59,135 @@
             100% { transform: translateX(-50%); }
         }
         .animate-scroll {
-            animation: scroll-left 20s linear infinite;
+            animation: scroll-left 25s linear infinite;
+        }
+        .group:hover .animate-scroll {
+             animation-play-state: paused;
         }
         .project-card {
             background: #fff;
             border-radius: 0.75rem;
             box-shadow: 0 2px 8px 0 rgba(0,0,0,0.04);
-            padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #f3f4f6;
-            min-height: 120px;
-            max-width: 250px;
-            margin: 0 auto;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            border: 1px solid #e5e7eb; /* gray-200 */
+            min-height: 150px;
         }
         .project-card:hover {
             transform: translateY(-4px) scale(1.01);
-            box-shadow: 0 4px 12px 0 rgba(0,0,0,0.06);
-            border-color: #d1d5db;
+            box-shadow: 0 4px 16px 0 rgba(0,0,0,0.08);
+            border-color: #d1d5db; /* gray-300 */
         }
         .project-icon {
             width: 24px;
             height: 24px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: #111827;
         }
         .project-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.3rem;
-            margin-bottom: 0.5rem;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         .project-badge {
             background: #f3f4f6;
-            color: #111827;
-            font-size: 0.6rem;
-            padding: 0.08rem 0.4rem;
+            color: #374151;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
             border-radius: 9999px;
             font-weight: 500;
-            letter-spacing: 0.02em;
         }
         .project-links {
             margin-top: auto;
+            padding-top: 0.5rem;
             display: flex;
-            gap: 0.3rem;
+            gap: 0.5rem;
             align-items: center;
         }
         .project-btn {
             background: #111827;
             color: #fff;
-            padding: 0.15rem 0.6rem;
-            border-radius: 0.3rem;
-            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
             font-weight: 500;
             text-decoration: none;
             transition: background 0.2s;
             box-shadow: 0 1px 2px 0 rgba(17,24,39,0.08);
-            line-height: 1.1;
         }
         .project-btn:hover {
-            background: #4b5563;
+            background: #374151;
         }
         .github-icon-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 22px;
-            height: 22px;
-            border-radius: 0.3rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 0.375rem;
             background: #f3f4f6;
             transition: background 0.2s;
-            border: none;
-            padding: 0;
-            margin-left: 2px;
+            border: 1px solid #e5e7eb;
         }
         .github-icon-btn:hover {
             background: #e5e7eb;
         }
         .github-svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             color: #111827;
         }
         .project-card h3 {
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-        }
-        .project-card p {
-            font-size: 0.85rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
+        .project-card p {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .interest-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb; /* gray-200 */
+            border-radius: 0.75rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            width: 250px; /* Fixed width for scroller items */
+            flex-shrink: 0; /* Prevent cards from shrinking */
+        }
+        .interest-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.07);
+            border-color: #9ca3af; /* gray-400 */
+        }
+        .interest-icon {
+            margin: 0 auto 1rem auto;
+            transition: transform 0.3s;
+        }
+        .interest-card:hover .interest-icon {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 640px) {
-  .max-w-4xl {
-    max-width: 100vw !important;
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-  }
-  .project-card {
-    max-width: 100%;
-    min-width: 0;
-    padding: 0.7rem 0.5rem 0.7rem 0.5rem;
-  }
-  .project-card h3 {
-    font-size: 0.95rem;
-  }
-  .project-card p {
-    font-size: 0.8rem;
-  }
-  .project-badges {
-    gap: 0.2rem;
-    margin-bottom: 0.4rem;
-  }
-  .project-badge {
-    font-size: 0.55rem;
-    padding: 0.06rem 0.3rem;
-  }
-  .project-links {
-    gap: 0.2rem;
-  }
-  .project-btn {
-    font-size: 0.7rem;
-    padding: 0.12rem 0.5rem;
-  }
-  .github-icon-btn {
-    width: 18px;
-    height: 18px;
-  }
-  .github-svg {
-    width: 11px;
-    height: 11px;
-  }
-  .card-container {
-    padding: 1rem 0.5rem;
-    height: auto;
-  }
-  .tech-icon {
-    max-width: 60px;
-    max-height: 36px;
-  }
-  .text-4xl {
-    font-size: 1.5rem;
-  }
-  .text-2xl {
-    font-size: 1.1rem;
-  }
-}
+            .max-w-4xl {
+                max-width: 100vw !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            .text-4xl { font-size: 2rem; }
+            .text-2xl { font-size: 1.25rem; }
+            .project-card { min-height: auto; }
+            .tech-card-container { padding: 1rem; height: auto; }
+            .tech-icon { max-width: 60px; max-height: 36px; }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -226,7 +199,6 @@
                 <a href="#about" class="nav-link text-gray-500 font-medium">Home</a>
                 <a href="#experience" class="nav-link text-gray-500 font-medium">Experience</a>
                 <a href="#projects" class="nav-link text-gray-500 font-medium">Projects</a>
-               <!-- <a href="#" class="nav-link text-gray-500 font-medium">Blog</a> -->
                 <a href="https://drive.google.com/file/d/1Oz9JSSryflSq-QVwIASETTawW85bLgrx/view?usp=drivesdk/" target="_blank" class="nav-link text-gray-500 font-medium">Resume</a>
             </nav>
             <div class="flex items-center space-x-5">
@@ -258,7 +230,7 @@
                                 I am a Blockchain Developer with a passion for building secure, scalable, and innovative decentralized applications. I thrive on solving complex problems in the Web3 space and enjoy working with modern technologies to bring ideas to life.
                             </p>
                             <p>
-                                 I hold a Bachelor of Engineering in Computer Science from Chandigarh University.
+                                I hold a Bachelor of Engineering in Computer Science from Chandigarh University.
                             </p>
                         </div>
                     </div>
@@ -290,9 +262,9 @@
             <!-- Tools and Technologies Section -->
             <section id="tools" class="mb-20">
                 <h2 class="text-2xl font-bold mb-8">Tools and Technologies</h2>
-                <div class="overflow-hidden relative">
+                <div class="overflow-hidden relative group py-3">
                     <div id="tech-scroll" class="flex min-w-full w-max animate-scroll gap-4">
-                        <!-- Tech icons will be injected here (duplicated for seamless scroll) -->
+                        <!-- Tech icons will be injected here -->
                     </div>
                 </div>
             </section>
@@ -300,34 +272,17 @@
             <!-- Projects Section -->
             <section id="projects" class="mb-20">
                 <h2 class="text-2xl font-bold mb-8">Projects</h2>
-                <div id="project-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div id="project-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <!-- Project list will be injected here -->
                 </div>
             </section>
             
-            <!-- My Interests Section -->
+            <!-- My Interests Section (ANIMATED & FIXED) -->
             <section id="interests" class="mb-16">
-                <h2 class="text-2xl font-bold mb-8">My Interests</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="card-container">
-                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                        <h3 class="font-semibold text-lg">Open Source</h3>
-                        <p class="text-gray-500 text-sm">I enjoy contributing to open-source projects.</p>
-                    </div>
-                    <div class="card-container">
-                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        <h3 class="font-semibold text-lg">Running</h3>
-                        <p class="text-gray-500 text-sm">Training for a half-marathon.</p>
-                    </div>
-                    <div class="card-container">
-                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <h3 class="font-semibold text-lg">Gaming</h3>
-                        <p class="text-gray-500 text-sm">I enjoy strategy and RPG games.</p>
-                    </div>
-                    <div class="card-container">
-                        <svg class="w-10 h-10 mb-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path></svg>
-                        <h3 class="font-semibold text-lg">Reading</h3>
-                        <p class="text-gray-500 text-sm">Sci-fi and technical books are my go-to.</p>
+                <h2 class="text-2xl font-bold mb-8">Beyond the Keyboard</h2>
+                <div class="overflow-hidden relative group py-3">
+                    <div id="interests-scroll" class="flex min-w-full w-max animate-scroll gap-6">
+                        <!-- Interest cards will be injected by JS -->
                     </div>
                 </div>
             </section>
@@ -364,13 +319,13 @@
             // TOOLS SCROLL
             const techScroll = document.getElementById('tech-scroll');
             const techHTML = technologies.map(tech =>
-                `<div class="card-container min-w-[120px]" title="${tech.name}">
+                `<div class="tech-card-container min-w-[120px]" title="${tech.name}">
                     <img src="${tech.logo}" alt="${tech.name} Logo" class="tech-icon" onerror="this.style.display='none'">
                 </div>`
             ).join('');
             techScroll.innerHTML = techHTML + techHTML;
 
-            // PROJECTS STATIC
+            // PROJECTS
             const projects = [
                 {
                     title: 'Staking DApp',
@@ -402,7 +357,7 @@
                 }
             ];
             const projectList = document.getElementById('project-list');
-            const defaultIcon = `<svg class="project-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor"/><path d="M16 3v4M8 3v4M3 11h18" stroke="currentColor"/></svg>`;
+            const defaultIcon = `<svg class="project-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125A2.25 2.25 0 014.5 4.875h15A2.25 2.25 0 0121.75 7.125v10.5A2.25 2.25 0 0119.5 19.875h-15A2.25 2.25 0 012.25 17.625V7.125z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.875v15m-4.5-15h9"></path></svg>`;
             const githubSVG = `<svg class="github-svg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`;
             projectList.innerHTML = projects.map(project => {
                 const badges = project.techs ? `<div class="project-badges">${project.techs.map(tech => `<span class="project-badge">${tech}</span>`).join('')}</div>` : '';
@@ -413,8 +368,41 @@
                 if (project.github) {
                     links += `<a href="${project.github}" target="_blank" class="github-icon-btn" aria-label="GitHub">${githubSVG}</a>`;
                 }
-                return `<div class="project-card">${defaultIcon}<h3 class="text-xl font-semibold mb-2">${project.title}</h3>${badges}<p class="text-gray-600 mb-4">${project.description}</p><div class="project-links">${links}</div></div>`;
+                return `<div class="project-card">${defaultIcon}<h3 class="font-semibold">${project.title}</h3><p class="text-gray-600">${project.description}</p>${badges}<div class="project-links">${links}</div></div>`;
             }).join('');
+
+            // INTERESTS SCROLL
+            const interests = [
+                {
+                    title: 'Open Source',
+                    description: 'Contributing code and ideas to public projects.',
+                    icon: `<svg class="w-12 h-12 interest-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 22.0001L18.5 18.5001M18.5 18.5001L21 21.0001M18.5 18.5001L16 15.0001M18.5 18.5001L21 16.0001" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.5 11.5L15.5 14.5" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12" stroke="#9ca3af" stroke-width="2"/><path d="M12 12L8.5 8.5M12 12L11.6464 12.3536C11.4512 12.5488 11.4512 12.8654 11.6464 13.0607L12 13.4142L13.0607 12.3536C13.2559 12.1583 13.2559 11.8417 13.0607 11.6464L12.7071 11.2929L12 12Z" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12" stroke="#9ca3af" stroke-width="2" stroke-linecap="round"/></svg>`
+                },
+                {
+                    title: 'Running',
+                    description: 'Hitting the pavement to clear my head and stay active.',
+                    icon: `<svg class="w-12 h-12 interest-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 21C15.5 21 16 17.5 19.5 17.5C23 17.5 23 21 23 21" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 21H15.5" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 18H13.5" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13.5L8.5 16.5L10.5 12L15.5 15L17.5 10L20.5 12.5" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21L8 21" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 18H7.5" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 6.5C17.5 5.11929 16.3807 4 15 4C13.6193 4 12.5 5.11929 12.5 6.5C12.5 7.88071 13.6193 9 15 9C16.3807 9 17.5 7.88071 17.5 6.5Z" stroke="#4b5563" stroke-width="2"/></svg>`
+                },
+                {
+                    title: 'Gaming',
+                    description: 'Exploring virtual worlds in strategy and RPGs.',
+                    icon: `<svg class="w-12 h-12 interest-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 12V10M16 12V14M16 12H14M16 12H18" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 12H8M10 12H12M10 12V10M10 12V14" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z" stroke="#9ca3af" stroke-width="2"/></svg>`
+                },
+                {
+                    title: 'Reading',
+                    description: 'Diving into new ideas through sci-fi and tech books.',
+                    icon: `<svg class="w-12 h-12 interest-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12C15 14.2091 13.2091 16 11 16C8.79086 16 7 14.2091 7 12C7 9.79086 8.79086 8 11 8" stroke="#4b5563" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+                }
+            ];
+            const interestsScroll = document.getElementById('interests-scroll');
+            const interestsHTML = interests.map(interest => 
+                `<div class="interest-card">
+                    ${interest.icon}
+                    <h3 class="font-semibold text-lg text-gray-800">${interest.title}</h3>
+                    <p class="text-gray-500 text-sm">${interest.description}</p>
+                </div>`
+            ).join('');
+            interestsScroll.innerHTML = interestsHTML + interestsHTML; // Duplicate for seamless scroll
         });
     </script>
 </body>
