@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gaurav Kumar Singh - Blockchain Developer</title>
+    <meta name="description" content="Portfolio of Gaurav Kumar Singh, a Blockchain Developer building secure and scalable Web3 applications.">
+    <meta name="theme-color" content="#111827" />
+    <link rel="icon" href="./hero.jpeg" type="image/jpeg" />
+    <meta property="og:title" content="Gaurav Kumar Singh - Blockchain Developer" />
+    <meta property="og:description" content="Secure, scalable, and innovative decentralized applications in Web3." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./hero.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+        (function() {
+            try {
+                var stored = localStorage.getItem('theme');
+                var sysDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (stored === 'dark' || (!stored && sysDark)) {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) { /* no-op */ }
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +33,53 @@
             background-color: #f9fafb; /* gray-50 */
             color: #111827; /* gray-900 */
         }
+        .dark body {
+            background-color: #0f172a; /* slate-900 */
+            color: #f3f4f6; /* gray-100 */
+        }
+        /* Brighten common muted text utilities in dark mode for readability */
+        .dark .text-gray-600, .dark .text-gray-500 { color: #d1d5db !important; }
+        .dark .text-gray-400 { color: #cbd5e1 !important; }
+        /* Accessibility focus styles */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #111827;
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
         .nav-link {
             transition: color 0.2s;
         }
         .nav-link:hover {
             color: #000;
         }
+        .nav-link.active {
+            color: #111827;
+            font-weight: 600;
+        }
+    .dark .nav-link { color: #9ca3af; }
+    .dark .nav-link:hover, .dark .nav-link.active { color: #f9fafb; }
+        /* Sticky header with subtle blur */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: saturate(120%) blur(8px);
+            background-color: rgba(249, 250, 251, 0.8); /* gray-50/80 */
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+        }
+        .dark .site-header {
+            background-color: rgba(2, 6, 23, 0.6); /* slate-950/60 */
+            border-bottom-color: #1f2937; /* gray-800 */
+        }
+            /* Mobile nav explicit theming (avoid Tailwind dark: variants on CDN) */
+            #mobileNav {
+                background-color: rgba(255,255,255,0.9);
+                border-bottom: 1px solid #e5e7eb;
+            }
+            .dark #mobileNav {
+                background-color: rgba(11,18,32,0.9);
+                border-bottom-color: #1f2937;
+            }
         .tech-card-container {
             display: flex;
             flex-direction: column;
@@ -32,6 +92,8 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
         }
+    .dark .tech-card-container { background-color: #0b1220; /* near slate-950 */ border: 1px solid #1f2937; }
+    .dark .tech-card-container:hover { box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5); }
         .tech-card-container:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -54,6 +116,8 @@
         .project-link:hover, .resume-link:hover {
             color: #000;
         }
+    .dark .project-link, .dark .resume-link { color: #d1d5db; }
+    .dark .project-link:hover, .dark .resume-link:hover { color: #ffffff; }
         @keyframes scroll-left {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -76,11 +140,13 @@
             border: 1px solid #e5e7eb; /* gray-200 */
             min-height: 150px;
         }
+    .dark .project-card { background: #0b1220; border-color: #1f2937; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
         .project-card:hover {
             transform: translateY(-4px) scale(1.01);
             box-shadow: 0 4px 16px 0 rgba(0,0,0,0.08);
             border-color: #d1d5db; /* gray-300 */
         }
+    .dark .project-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.45); border-color: #374151; }
         .project-icon {
             width: 24px;
             height: 24px;
@@ -136,11 +202,19 @@
         .github-icon-btn:hover {
             background: #e5e7eb;
         }
+    .dark .github-icon-btn { background: #0b1220; border-color: #1f2937; }
+    .dark .github-icon-btn:hover { background: #111827; }
         .github-svg {
             width: 16px;
             height: 16px;
             color: #111827;
         }
+    .dark .github-svg { color: #e5e7eb; }
+    /* Header icon colors */
+    .site-header a, .site-header button { color: #9ca3af; }
+    .site-header a:hover, .site-header button:hover { color: #6b7280; }
+    .dark .site-header a, .dark .site-header button { color: #cbd5e1; }
+    .dark .site-header a:hover, .dark .site-header button:hover { color: #e5e7eb; }
         .project-card h3 {
             font-size: 1.1rem;
             font-weight: 600;
@@ -148,10 +222,14 @@
         }
         .project-card p {
             font-size: 0.9rem;
-            color: #4b5563;
+            color: #374151;
             margin-bottom: 0.75rem;
             line-height: 1.5;
         }
+        .dark .project-card p { color: #e5e7eb; }
+    /* Reveal animations */
+    .reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms ease, transform 500ms ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
         .interest-card {
             background-color: #ffffff;
@@ -163,11 +241,13 @@
             width: 250px; /* Fixed width for scroller items */
             flex-shrink: 0; /* Prevent cards from shrinking */
         }
+    .dark .interest-card { background-color: #0b1220; border-color: #1f2937; }
         .interest-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.07);
             border-color: #9ca3af; /* gray-400 */
         }
+    .dark .interest-card:hover { box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5); border-color: #374151; }
         .interest-icon {
             margin: 0 auto 1rem auto;
             transition: transform 0.3s;
@@ -175,6 +255,13 @@
         .interest-card:hover .interest-icon {
             transform: scale(1.1);
         }
+
+    /* Footer & buttons in dark */
+    .dark footer { color: #9ca3af; }
+    .dark .project-btn { background: #e5e7eb; color: #111827; }
+    .dark .project-btn:hover { background: #d1d5db; }
+    .dark #themeToggle { background: #0b1220; color: #e5e7eb; border-color: #1f2937; }
+    .dark #themeToggle:hover { background: #111827; }
 
         @media (max-width: 640px) {
             .max-w-4xl {
@@ -188,43 +275,72 @@
             .tech-card-container { padding: 1rem; height: auto; }
             .tech-icon { max-width: 60px; max-height: 36px; }
         }
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-scroll { animation: none !important; }
+            .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+        }
     </style>
 </head>
 <body class="antialiased">
+    <a href="#about" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 bg-white text-gray-900 px-3 py-2 rounded-md shadow border border-gray-200">Skip to content</a>
 
-    <div class="max-w-4xl mx-auto px-6 py-12">
+    <div class="max-w-4xl mx-auto px-6 py-6">
         <!-- Header & Navigation -->
-        <header class="flex justify-between items-center mb-16">
-            <nav class="flex items-center space-x-6">
+    <header class="site-header flex justify-between items-center mb-12 py-4 px-4 rounded-xl">
+            <button id="menuToggle" class="sm:hidden text-gray-400 hover:text-gray-600 transition" aria-label="Toggle menu" aria-controls="mobileNav" aria-expanded="false">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/>
+                </svg>
+            </button>
+            <nav id="primaryNav" class="hidden sm:flex items-center space-x-6">
                 <a href="#about" class="nav-link text-gray-500 font-medium">Home</a>
                 <a href="#experience" class="nav-link text-gray-500 font-medium">Experience</a>
                 <a href="#projects" class="nav-link text-gray-500 font-medium">Projects</a>
-                <a href="https://drive.google.com/file/d/1Oz9JSSryflSq-QVwIASETTawW85bLgrx/view?usp=drivesdk/" target="_blank" class="nav-link text-gray-500 font-medium">Resume</a>
+                <a href="https://drive.google.com/file/d/1Oz9JSSryflSq-QVwIASETTawW85bLgrx/view?usp=drivesdk/" target="_blank" rel="noopener noreferrer" class="nav-link text-gray-500 font-medium">Resume</a>
             </nav>
             <div class="flex items-center space-x-5">
-                <a href="https://github.com/gks2022004" target="_blank" class="text-gray-400 hover:text-gray-600 transition">
+                <a href="https://github.com/gks2022004" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-600 transition" aria-label="GitHub">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.91 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
-                <a href="https://www.linkedin.com/in/imgauravkumar7/" target="_blank" class="text-gray-400 hover:text-gray-600 transition">
+                <a href="https://www.linkedin.com/in/imgauravkumar7/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-600 transition" aria-label="LinkedIn">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <a href="mailto:imgauravkumar7@gmail.com" class="text-gray-400 hover:text-gray-600 transition">
+                <a href="mailto:imgauravkumar7@gmail.com" class="text-gray-400 hover:text-gray-600 transition" aria-label="Email">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
                 </a>
-                <a href="https://x.com/i_amgauravkumar" target="_blank" class="text-gray-400 hover:text-gray-600 transition" aria-label="X">
+                <a href="https://x.com/i_amgauravkumar" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-gray-600 transition" aria-label="X">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M14.6 10.5L22 1H20.02L13.87 8.67L9.5 1H2L9.57 12.73L2 23H4.01L10.6 14.77L15.5 23H23L14.6 10.5ZM10.8 13.8L10.2 12.9L3.5 2.1H7.4L12.1 9.1L12.7 10L20.5 21.9H16.6L10.8 13.8Z"/>
                     </svg>
                 </a>
+                <button id="themeToggle" aria-label="Toggle dark mode" class="transition inline-flex items-center justify-center">
+                    <span id="iconMoon" aria-hidden="true">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    </span>
+                    <span id="iconSun" aria-hidden="true" class="hidden">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zM1 13h3v-2H1v2zm10-9h2V1h-2v3zm7.66 1.46l1.79-1.8-1.41-1.41-1.8 1.79 1.42 1.42zM17 13h3v-2h-3v2zm-5 7h2v-3h-2v3zm6.24-1.84l1.8 1.79 1.41-1.41-1.79-1.8-1.42 1.42zM4.24 18.16l-1.8 1.79 1.41 1.41 1.79-1.79-1.4-1.41zM12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+                    </span>
+                </button>
             </div>
         </header>
+        <!-- Mobile Nav -->
+    <div id="mobileNav" class="sm:hidden hidden backdrop-blur px-6 py-3 rounded-b-xl">
+            <div class="flex flex-col space-y-3">
+                <a href="#about" class="nav-link text-gray-500 font-medium">Home</a>
+                <a href="#experience" class="nav-link text-gray-500 font-medium">Experience</a>
+                <a href="#projects" class="nav-link text-gray-500 font-medium">Projects</a>
+                <a href="https://drive.google.com/file/d/1Oz9JSSryflSq-QVwIASETTawW85bLgrx/view?usp=drivesdk/" target="_blank" rel="noopener noreferrer" class="nav-link text-gray-500 font-medium">Resume</a>
+            </div>
+        </div>
 
         <main>
             <!-- About Me Section -->
-            <section id="about" class="mb-20">
+            <section id="about" class="mb-20 reveal">
                 <div class="md:flex md:items-center md:space-x-12">
                     <div class="md:w-2/3">
-                        <h1 class="text-4xl font-bold mb-4">Gaurav Kumar Singh</h1>
+                        <h1 class="text-4xl font-bold mb-1">Gaurav Kumar Singh</h1>
+                        <p class="text-base text-gray-500 mb-4">Blockchain Developer</p>
                         <div class="text-lg text-gray-600 space-y-4">
                             <p>
                                 I am a Blockchain Developer with a passion for building secure, scalable, and innovative decentralized applications. I thrive on solving complex problems in the Web3 space and enjoy working with modern technologies to bring ideas to life.
@@ -235,13 +351,13 @@
                         </div>
                     </div>
                     <div class="flex-shrink-0 mt-8 md:mt-0 md:w-1/3 flex justify-center">
-                        <img src="./hero.jpeg" alt="Gaurav Kumar Singh" class="w-48 h-48 rounded-full mx-auto mb-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] ring-2 ring-gray-200" >
+                        <img src="./hero.jpeg" alt="Portrait of Gaurav Kumar Singh" class="w-48 h-48 rounded-full mx-auto mb-6 shadow-[0_4px_20px_rgba(0,0,0,0.15)] ring-2 ring-gray-200" loading="eager" fetchpriority="high" decoding="async">
                     </div>
                 </div>
             </section>
             
             <!-- Experience Section -->
-            <section id="experience" class="mb-20">
+            <section id="experience" class="mb-20 reveal">
                 <h2 class="text-2xl font-bold mb-8">Experience</h2>
                  <div class="space-y-6">
                     <div>
@@ -260,7 +376,7 @@
             </section>
 
             <!-- Tools and Technologies Section -->
-            <section id="tools" class="mb-20">
+            <section id="tools" class="mb-20 reveal">
                 <h2 class="text-2xl font-bold mb-8">Tools and Technologies</h2>
                 <div class="overflow-hidden relative group py-3">
                     <div id="tech-scroll" class="flex min-w-full w-max animate-scroll gap-4">
@@ -270,7 +386,7 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="mb-20">
+            <section id="projects" class="mb-20 reveal">
                 <h2 class="text-2xl font-bold mb-8">Projects</h2>
                 <div id="project-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <!-- Project list will be injected here -->
@@ -278,7 +394,7 @@
             </section>
             
             <!-- My Interests Section (ANIMATED & FIXED) -->
-            <section id="interests" class="mb-16">
+            <section id="interests" class="mb-16 reveal">
                 <h2 class="text-2xl font-bold mb-8">Beyond the Keyboard</h2>
                 <div class="overflow-hidden relative group py-3">
                     <div id="interests-scroll" class="flex min-w-full w-max animate-scroll gap-6">
@@ -290,11 +406,74 @@
         
         <footer class="text-center text-gray-400 text-sm py-8">
             <p>Copyright &copy; 2025 Gaurav Kumar Singh. All rights reserved.</p>
-        </footer>
+    </footer>
+    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 hidden bg-white text-gray-700 border border-gray-200 shadow px-3 py-2 rounded-md hover:bg-gray-50 transition">↑ Top</button>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Active nav highlighting
+            const sections = ['about','experience','tools','projects','interests'];
+            const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+            const sectionEls = sections.map(id => document.getElementById(id)).filter(Boolean);
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+                    }
+                });
+            }, { rootMargin: '-40% 0px -55% 0px', threshold: 0.01 });
+            sectionEls.forEach(el => io.observe(el));
+
+            // Reveal on scroll
+            const revealEls = document.querySelectorAll('.reveal');
+            const ro = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+            }, { threshold: 0.1 });
+            revealEls.forEach(el => ro.observe(el));
+
+            // Back to top visibility and click
+            const backToTop = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { backToTop.classList.remove('hidden'); } else { backToTop.classList.add('hidden'); }
+            });
+            backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const iconMoon = document.getElementById('iconMoon');
+            const iconSun = document.getElementById('iconSun');
+            const isDark = () => document.documentElement.classList.contains('dark');
+            const setIcon = () => {
+                const dark = isDark();
+                iconMoon.classList.toggle('hidden', dark);
+                iconSun.classList.toggle('hidden', !dark);
+            };
+            setIcon();
+            themeToggle.addEventListener('click', () => {
+                const dark = isDark();
+                document.documentElement.classList.toggle('dark', !dark);
+                try { localStorage.setItem('theme', !dark ? 'dark' : 'light'); } catch (e) {}
+                setIcon();
+            });
+
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            const updateExpanded = (open) => menuToggle && menuToggle.setAttribute('aria-expanded', String(open));
+            if (menuToggle && mobileNav) {
+                menuToggle.addEventListener('click', () => {
+                    const isHidden = mobileNav.classList.contains('hidden');
+                    mobileNav.classList.toggle('hidden', !isHidden);
+                    updateExpanded(isHidden);
+                });
+                // Hide mobile nav when clicking a link
+                mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+                    mobileNav.classList.add('hidden');
+                    updateExpanded(false);
+                }));
+            }
             const technologies = [
                 { name: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
                 { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
@@ -363,10 +542,11 @@
                 const badges = project.techs ? `<div class="project-badges">${project.techs.map(tech => `<span class="project-badge">${tech}</span>`).join('')}</div>` : '';
                 let links = '';
                 if (project.live) {
-                    links += `<a href="${project.live}" target="_blank" class="project-btn">Live Demo</a>`;
+                    links += `<a href="${project.live}" target="_blank" rel="noopener noreferrer" class="project-btn">Live Demo</a>`;
                 }
-                if (project.github) {
-                    links += `<a href="${project.github}" target="_blank" class="github-icon-btn" aria-label="GitHub">${githubSVG}</a>`;
+                const isGithub = project.github && /https?:\/\/github\.com\//.test(project.github);
+                if (isGithub) {
+                    links += `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="github-icon-btn" aria-label="GitHub">${githubSVG}</a>`;
                 }
                 return `<div class="project-card">${defaultIcon}<h3 class="font-semibold">${project.title}</h3><p class="text-gray-600">${project.description}</p>${badges}<div class="project-links">${links}</div></div>`;
             }).join('');
@@ -403,6 +583,37 @@
                 </div>`
             ).join('');
             interestsScroll.innerHTML = interestsHTML + interestsHTML; // Duplicate for seamless scroll
+
+            // Pause marquee on focus for accessibility
+            document.querySelectorAll('.group').forEach(g => {
+                g.addEventListener('focusin', () => {
+                    const s = g.querySelector('.animate-scroll');
+                    if (s) s.style.animationPlayState = 'paused';
+                });
+                g.addEventListener('focusout', () => {
+                    const s = g.querySelector('.animate-scroll');
+                    if (s) s.style.animationPlayState = 'running';
+                });
+            });
+
+            // JSON-LD structured data
+            const ld = {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Gaurav Kumar Singh",
+                "jobTitle": "Blockchain Developer",
+                "url": document.location.href,
+                "sameAs": [
+                    "https://github.com/gks2022004",
+                    "https://www.linkedin.com/in/imgauravkumar7/",
+                    "https://x.com/i_amgauravkumar"
+                ],
+                "email": "mailto:imgauravkumar7@gmail.com"
+            };
+            const script = document.createElement('script');
+            script.type = 'application/ld+json';
+            script.textContent = JSON.stringify(ld);
+            document.head.appendChild(script);
         });
     </script>
 </body>
