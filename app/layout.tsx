@@ -33,11 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "min-h-dvh antialiased")}> 
+  <html lang="en" suppressHydrationWarning>
+      <body className={cn(inter.className, "min-h-dvh antialiased bg-background text-foreground")}> 
         <script
           dangerouslySetInnerHTML={{
-            __html: `(() => { try { const t = localStorage.getItem('theme'); const m = window.matchMedia('(prefers-color-scheme: dark)').matches; if (t === 'dark' || (!t && m)) document.documentElement.classList.add('dark'); } catch {} })();`,
+      __html: `(() => { try { const t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark'); } catch {} })();`,
           }}
         />
         <script

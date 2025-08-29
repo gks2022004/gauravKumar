@@ -6,8 +6,8 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";
-    return (localStorage.getItem("theme") as "light" | "dark") ||
-      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const stored = localStorage.getItem("theme");
+    return stored === "dark" ? "dark" : "light"; // default to light when unset
   });
 
   useEffect(() => {
@@ -23,9 +23,10 @@ export function ThemeToggle() {
   }, [mounted, theme]);
 
   if (!mounted) {
+    // Assume light by default before hydration
     return (
       <button aria-label="Toggle theme" className="hover:text-foreground">
-        <Sun className="w-5 h-5" />
+        <Moon className="w-5 h-5" />
       </button>
     );
   }

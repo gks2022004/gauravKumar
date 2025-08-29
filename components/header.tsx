@@ -6,7 +6,10 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-  <header className="sticky top-0 z-50 supports-[backdrop-filter]:backdrop-blur-md bg-white/30 dark:bg-black/25 border border-white/30 dark:border-white/10 rounded-2xl shadow-sm mb-12 py-5 px-6 text-foreground">
+  <header className="sticky top-0 z-50 supports-[backdrop-filter]:backdrop-blur-lg backdrop-saturate-150
+    border rounded-2xl mb-12 py-5 px-6 text-foreground
+    bg-gray-500/10 border-black/10 shadow-md shadow-black/5
+    dark:bg-black/25 dark:border-white/10">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
         <button className="sm:hidden" aria-label="Toggle menu" onClick={() => setOpen(v => !v)}>
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
