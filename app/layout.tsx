@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import ThemedBackground from "@/components/themed-background";
@@ -59,7 +60,9 @@ export default function RootLayout({
           }}
         />
   <ThemedBackground />
-  <ScrollToHash />
+        <Suspense fallback={null}>
+          <ScrollToHash />
+        </Suspense>
         {children}
       </body>
     </html>
