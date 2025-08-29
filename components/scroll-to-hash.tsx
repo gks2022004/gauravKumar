@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
 
 function doScrollToHash() {
   try {
@@ -20,18 +19,12 @@ function doScrollToHash() {
 }
 
 export function ScrollToHash() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
-  // On initial mount
   useEffect(() => {
     doScrollToHash();
+    const onHash = () => doScrollToHash();
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
   }, []);
-
-  // On route/hash/search changes
-  useEffect(() => {
-    doScrollToHash();
-  }, [pathname, searchParams]);
 
   return null;
 }

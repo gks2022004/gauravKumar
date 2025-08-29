@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import ThemedBackground from "@/components/themed-background";
 import { ScrollToHash } from "@/components/scroll-to-hash";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,7 +60,9 @@ export default function RootLayout({
           }}
         />
   <ThemedBackground />
-  <ScrollToHash />
+        <Suspense fallback={null}>
+          <ScrollToHash />
+        </Suspense>
         {children}
       </body>
     </html>
