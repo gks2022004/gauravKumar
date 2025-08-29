@@ -7,39 +7,8 @@ export type Post = {
 };
 
 // Temporary in-memory posts. Replace with your CMS or MDX later.
-export const posts: Post[] = [
-  {
-    slug: "welcome-to-my-blog",
-    title: "Welcome to my blog",
-    date: "2025-08-29",
-    excerpt: "Kicking off a space to share notes on blockchain, dev tooling, and learning.",
-    content: [
-      { type: "p", text: "This blog is where I plan to write about Web3, blockchain design, and practical engineering tips." },
-      { type: "h2", text: "Topics I enjoy" },
-      { type: "ul", items: [
-        "Smart contracts and security",
-        "Scalable backend patterns",
-        "Developer experience and productivity",
-      ] },
-      { type: "p", text: "Stay tuned for more posts soon!" },
-    ],
-  },
-  {
-    slug: "notes-on-building-scalable-dapps",
-    title: "Notes on building scalable dApps",
-    date: "2025-08-28",
-    excerpt: "A few mental models I use when thinking about scale in decentralized apps.",
-    content: [
-      { type: "p", text: "Scaling dApps is equal parts protocol decisions and pragmatic engineering tradeoffs." },
-      { type: "h2", text: "Key ideas" },
-      { type: "ul", items: [
-        "Separate read vs. write paths early",
-        "Cache aggressively at the edges",
-        "Index on the data you actually query",
-      ] },
-    ],
-  },
-];
+// No posts yet (placeholder). Add posts here later.
+export const posts: Post[] = [];
 
 export function getPosts() {
   // latest first
