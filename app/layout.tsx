@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import ThemedBackground from "@/components/themed-background";
+import { ScrollToHash } from "@/components/scroll-to-hash";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
   <html lang="en" suppressHydrationWarning>
-      <body className={cn(inter.className, "min-h-dvh antialiased bg-background text-foreground")}> 
+  <body className={cn(inter.className, "min-h-dvh antialiased bg-background text-foreground")}> 
         <script
           dangerouslySetInnerHTML={{
       __html: `(() => { try { const t = localStorage.getItem('theme'); if (t === 'dark') document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark'); } catch {} })();`,
@@ -58,6 +59,7 @@ export default function RootLayout({
           }}
         />
   <ThemedBackground />
+  <ScrollToHash />
         {children}
       </body>
     </html>

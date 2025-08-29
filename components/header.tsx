@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -15,9 +16,10 @@ export function Header() {
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M3 6h18v2H3zM3 11h18v2H3zM3 16h18v2H3z"/></svg>
         </button>
         <nav className="hidden sm:flex items-center gap-6 text-foreground/80">
-          <a href="#about" className="nav-link hover:text-foreground">Home</a>
-          <a href="#experience" className="nav-link hover:text-foreground">Experience</a>
-          <a href="#projects" className="nav-link hover:text-foreground">Projects</a>
+          <Link href="/#about" className="nav-link hover:text-foreground">Home</Link>
+          <Link href="/#experience" className="nav-link hover:text-foreground">Experience</Link>
+          <Link href="/#projects" className="nav-link hover:text-foreground">Projects</Link>
+          <Link href="/blog" className="nav-link hover:text-foreground">Blogs</Link>
           <a href="https://drive.google.com/file/d/1Oz9JSSryflSq-QVwIASETTawW85bLgrx/view?usp=drivesdk/" target="_blank" rel="noreferrer" className="hover:text-foreground">Resume</a>
         </nav>
         <div className="flex items-center gap-4 text-foreground/80">
@@ -35,9 +37,10 @@ export function Header() {
       {open && (
   <div className="sm:hidden mt-3 border rounded-xl p-4 supports-[backdrop-filter]:backdrop-blur-md bg-white/20 dark:bg-black/25 border-white/20 dark:border-white/10 text-white dark:text-foreground">
           <div className="grid gap-2">
-            <a href="#about" className="nav-link">Home</a>
-            <a href="#experience" className="nav-link">Experience</a>
-            <a href="#projects" className="nav-link">Projects</a>
+            <Link href="/#about" className="nav-link">Home</Link>
+            <Link href="/#experience" className="nav-link">Experience</Link>
+            <Link href="/#projects" className="nav-link">Projects</Link>
+            <Link href="/blog" className="nav-link">Blogs</Link>
             <a href="https://drive.google.com/file/d/1Oz9JSSryflSq-QVwIASETTawW85bLgrx/view?usp=drivesdk/" target="_blank" rel="noreferrer">Resume</a>
           </div>
         </div>
