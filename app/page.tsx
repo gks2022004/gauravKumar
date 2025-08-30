@@ -250,14 +250,14 @@ const projects = [
 		description:
 			"A Web3 dApp for token staking and rewards on Sepolia, featuring a custom algorithm for automated reward calculation.",
 		live: "https://staking-dapp-7.vercel.app/",
-		github: "https://staking-dapp-7.vercel.app/",
+		github: "https://github.com/gks2022004/Staking_dapp",
 		techs: ["Solidity", "React", "Web3", "Sepolia"],
 	},
 	{
 		title: "NFT Marketplace",
 		description:
 			"A full-featured marketplace for creating, minting, and trading NFTs, with decentralized metadata storage via IPFS.",
-		live: null,
+		live: "https://nft-becho.vercel.app/",
 		github: "https://github.com/gks2022004/NFTMarketPlace",
 		techs: ["Solidity", "React", "IPFS", "Node.js"],
 	},
@@ -266,14 +266,14 @@ const projects = [
 		description:
 			"A secure crypto wallet with 24-word seed phrase generation for non-custodial management and ETH transfers.",
 		live: "https://cryptowallet-virid.vercel.app/",
-		github: "https://cryptowallet-virid.vercel.app/",
+		github: "https://github.com/gks2022004/cryptowallet",
 		techs: ["React", "Web3", "Ethereum"],
 	},
 	{
 		title: "Q-Notes",
 		description:
 			"A cross-platform, end-to-end encrypted notes app implementing post-quantum secure encryption (Kyber-768).",
-		live: null,
+		live: "https://github.com/gks2022004/Q-NOTES/releases/download/v1.0.1/quantum-notes.exe",
 		github: "https://github.com/gks2022004/Q-NOTES",
 		techs: ["React Native", "Encryption", "Kyber-768"],
 	},
