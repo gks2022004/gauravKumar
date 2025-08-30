@@ -508,7 +508,7 @@ export default function Page() {
 											href={p.live}
 											target="_blank"
 											rel="noreferrer"
-											className="inline-flex items-center px-3 py-1.5 rounded-md bg-card-foreground text-card text-sm font-medium shadow-sm hover:opacity-90"
+											className="inline-flex items-center px-3 py-1.5 rounded-md bg-card-foreground text-card text-sm font-medium shadow-sm hover:opacity-90 border-2 border-transparent hover:border-blue-400/50 hover:shadow-lg hover:shadow-blue-400/20 transition-all duration-300"
 										>
 											Live Demo
 										</a>
