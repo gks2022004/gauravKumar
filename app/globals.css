@@ -320,4 +320,25 @@
   );
 }
 
+/* Custom animations for painted background */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(5deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+  75% { transform: translateY(-15px) rotate(-5deg); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateX(0) skewX(0deg) rotate(0deg); }
+  25% { transform: translateX(15px) skewX(2deg) rotate(2deg); }
+  50% { transform: translateX(-10px) skewX(-3deg) rotate(-1deg); }
+  75% { transform: translateX(20px) skewX(1deg) rotate(3deg); }
+}
+
+@keyframes stroke {
+  0%, 100% { transform: translateY(0) rotate(0deg) scaleX(1); }
+  33% { transform: translateY(-8px) rotate(2deg) scaleX(1.1); }
+  66% { transform: translateY(5px) rotate(-1deg) scaleX(0.95); }
+}
+
 /* Let hover colors follow Tailwind utilities and CSS variables (no forced gold) */
